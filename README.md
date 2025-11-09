@@ -1,27 +1,58 @@
-# Geospatial Machine Learning for Illegal Fishing Detection
+# Detecting Illegal Fishing Activities Using Satellite AIS Data
 
 ## Overview
-Real-time maritime anomaly detection system using AIS data from Global Fishing Watch
+Illegal, Unreported, and Unregulated (IUU) fishing is a major threat to marine ecosystems and global economic stability. Many fishing vessels intentionally disable tracking systems or operate outside permitted regions to avoid detection.  
 
-## Dataset
-- Source: Global Fishing Watch (2012-2024)
-- 190,000+ vessels tracked
-- 800+ million AIS positions
+This project leverages **Satellite AIS (Automatic Identification System) data** and **Machine Learning** to identify suspicious fishing behavior based on vessel activity patterns.
 
-## Methodology
-1. Data Preprocessing: Feature engineering (speed anomalies, zone violations)
-2. EDA: Geospatial visualization, temporal patterns
-3. K-Means Clustering: Identified 4 vessel behavior groups
-4. Classification: Compared 6 algorithms
-5. Evaluation: Precision/Recall focus (false positives costly)
+---
 
-## Results
-| Model | Accuracy | Precision | Recall | F1-Score |
-|-------|----------|-----------|--------|----------|
-| XGBoost | 0.89 | 0.87 | 0.91 | 0.89 |
-| Random Forest | 0.85 | 0.83 | 0.88 | 0.85 |
-| SVM | 0.82 | 0.80 | 0.84 | 0.82 |
+## Objectives
+- Detect vessels exhibiting **suspicious fishing behavior**
+- Classify vessel activity as **Normal** or **Potentially Illegal**
+- Support maritime monitoring, enforcement authorities, and sustainability research
 
-## Impact
-- Can detect illegal fishing 3-5 days faster than manual monitoring
-- Reduces false positives by 40% vs rule-based systems
+---
+
+## Dataset Description
+The dataset is derived from **Global Fishing Watch** monthly vessel activity summaries.
+
+Each row represents the activity of a vessel in a specific ocean grid cell on a given date.
+
+| Column | Description |
+|--------|-------------|
+| `date` | Activity date |
+| `year`, `month` | Time-based grouping fields |
+| `cell_ll_lat`, `cell_ll_lon` | Geographic position (latitude & longitude) |
+| `flag` | Vessel nationality (ISO country code) |
+| `geartype` | Type of fishing gear used (e.g., trawler, longline, purse seine) |
+| `hours` | Total hours vessel stayed in the area |
+| `fishing_hours` | Estimated hours spent actively fishing |
+| `mmsi_present` | 1 = AIS identity broadcasted, 0 = AIS off (identity hidden) |
+
+### Key Risk Indicators
+- **AIS turned off (`mmsi_present = 0`)** → High suspicion
+- **Fishing in regions outside country’s permitted waters**
+- **High fishing intensity in deep ocean zones**
+- **High-risk gear types associated with commercial illegal fishing**
+
+---
+
+## Data Preprocessing & Feature Engineering
+- Converted `date` to appropriate datetime format
+- Created time-based features:
+  - `day_of_week`
+  - `is_weekend`
+  - `day_of_month`
+- Derived spatial features:
+  - `distance_from_equator = abs(latitude)`
+  - `hemisphere = north / south`
+- Calculated behavioral features:
+  - `fishing_efficiency = fishing_hours / hours`
+
+---
+
+## Handling Class Imbalance
+Illegal fishing cases are relatively fewer than normal fishing events.  
+To avoid biased learning, we applied:
+
