@@ -49,6 +49,37 @@ Each row represents the activity of a vessel in a specific ocean grid cell on a 
   - `hemisphere = north / south`
 - Calculated behavioral features:
   - `fishing_efficiency = fishing_hours / hours`
+SMOTE (Synthetic Minority Oversampling Technique)
+This balances both classes before model training.
+
+---
+
+## Models Used
+Multiple machine learning models were trained and compared:
+
+| Model | Purpose |
+|-------|---------|
+| Logistic Regression | Baseline, interpretable model |
+| Decision Tree | Captures nonlinear patterns |
+| Random Forest | Robust ensemble classification |
+| XGBoost | High-performance boosted trees |
+| SVM | Margin-based classification |
+| KNN | Behavior similarity-based classification |
+| Gaussian Naive Bayes | Probabilistic baseline |
+
+Performance was evaluated using:
+- Accuracy
+- Precision
+- Recall
+- F1-Score
+- ROC-AUC
+
+> **Recall was prioritized** to avoid missing illegal activity cases.
+
+---
+
+## System Workflow
+
 
 ---
 
