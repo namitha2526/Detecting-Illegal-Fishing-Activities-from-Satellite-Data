@@ -109,10 +109,15 @@ Satellite AIS Data → Preprocessing → Feature Engineering
 
 ## Repository Structure
 ├── data/ # AIS processed dataset
+
 ├── notebooks/ # Model development and EDA notebooks
+
 ├── models/ # Exported or saved ML models
+
 ├── visualizations/ # Plots and analytics outputs
+
 ├── README.md # Project documentation (this file)
+
 └── requirements.txt # Dependencies
 
 ---
