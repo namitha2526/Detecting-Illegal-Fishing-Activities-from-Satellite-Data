@@ -108,6 +108,36 @@ Satellite AIS Data → Preprocessing → Feature Engineering
 ---
 
 ## Repository Structure
+├── data/ # AIS processed dataset
+├── notebooks/ # Model development and EDA notebooks
+├── models/ # Exported or saved ML models
+├── visualizations/ # Plots and analytics outputs
+├── README.md # Project documentation (this file)
+└── requirements.txt # Dependencies
 
+---
+
+## Dependencies
+pandas
+numpy
+matplotlib
+seaborn
+scikit-learn
+xgboost
+imblearn
+
+---
+
+## Author
+**Namitha R**  
+Computer Science & Engineering  
+
+LinkedIn: https://www.linkedin.com/in/namitha-r-b52799310/  
+GitHub: https://github.com/namitha2526  
+
+---
+
+## License
+This project is released under the **MIT License**.
 
 
