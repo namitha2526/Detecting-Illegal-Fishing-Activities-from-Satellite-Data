@@ -49,6 +49,10 @@ Each row represents the activity of a vessel in a specific ocean grid cell on a 
   - `hemisphere = north / south`
 - Calculated behavioral features:
   - `fishing_efficiency = fishing_hours / hours`
+  
+## Handling Class Imbalance
+Illegal fishing cases are relatively fewer than normal fishing events.  
+To avoid biased learning, we applied:
 SMOTE (Synthetic Minority Oversampling Technique)
 This balances both classes before model training.
 
@@ -79,11 +83,31 @@ Performance was evaluated using:
 ---
 
 ## System Workflow
+Satellite AIS Data → Preprocessing → Feature Engineering
+→ Class Balancing (SMOTE) → Multi-Model Training
+→ Suspicious Vessel Classification → Output / Alerts
+---
 
 
 ---
 
-## Handling Class Imbalance
-Illegal fishing cases are relatively fewer than normal fishing events.  
-To avoid biased learning, we applied:
+## Real-World Applications
+- Coast Guard surveillance & patrol optimization
+- Fisheries management and maritime law enforcement
+- Ocean sustainability and ecological protection
+- NGO & government monitoring (e.g., Global Fishing Watch)
+
+---
+
+## Future Improvements
+- Integrate Exclusive Economic Zone (EEZ) boundary data
+- Apply LSTM/GRU sequence models for movement trajectory analysis
+- Add Synthetic Aperture Radar (SAR) satellite verification
+- Build real-time anomaly detection dashboard
+
+---
+
+## Repository Structure
+
+
 
