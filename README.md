@@ -6,7 +6,7 @@ Illegal, Unreported, and Unregulated (IUU) fishing is a major threat to marine e
 This project leverages **Satellite AIS (Automatic Identification System) data** and **Machine Learning** to identify suspicious fishing behavior based on vessel activity patterns.
 
 ---
-
+ 
 ## Objectives
 - Detect vessels exhibiting **suspicious fishing behavior**
 - Classify vessel activity as **Normal** or **Potentially Illegal**
